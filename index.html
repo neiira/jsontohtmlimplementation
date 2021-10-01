@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Jason file data to Table</title>
+</head>
+<body>
+    
+    <section class="conainer-box">
+        
+        <div class="table">
+            <h1>Table cretaed from jason file data</h1>
+            <table class="information-table" id="Table">
+                <thead>
+                    <tr>
+                        <th>key</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Comment</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    
+                </tbody>
+            </table>
+        </div>
+
+        
+        <div class="filter-search">
+            <h2>Employee Details</h2>
+            
+            <input type="text" id="query" class="query" placeholder=" search name">
+            <div class="second-table">
+
+                <table class="information-table" id="secondTable">
+                    <thead>
+                        <tr>
+                            <th>key</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Address</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody id="secondtTableBody">
+                        
+                    </tbody>
+                </table>
+                <div id="message">
+                    Search not Found!!
+                </div>
+            </div>
+            
+        </div>
+
+    </section>
+    <script>
+        
+        //creation of table from jason data using fetch method 
+        fetch("./assignment.json").then(response=>response.json())
+        .then(info=>{
+            // console.log(info)
+            
+            if (info.data.length > 0) {
+                let temp="";
+
+                
+                info.data.forEach((row) => {
+                    temp +="<tr>";
+                    temp+="<td>"+row.key+"</td>";
+                    temp+="<td>"+row.name+"</td>";
+                    temp+="<td>"+row.age+"</td>";
+                    temp+="<td>"+row.address+"</td>";
+                    temp+="<td>"+row.tags+"</td></tr>";
+                })
+                
+            
+                document.getElementById("table-body").innerHTML = temp;
+            }
+        })
+
+        //array to create a emplyee details table
+        const employeeDetails = [
+        {
+         "key":"1",
+         "name":"John Brown",
+         "age":32,
+         "address":"New York No. 1 Lake Park, New York No. 1 Lake Park",
+         "tags":[
+            "nice",
+            "developer"
+         ]
+        },
+        {
+         "key":"2",
+         "name":"Jim Green",
+         "age":42,
+         "address":"London No. 2 Lake Park, London No. 2 Lake Park",
+         "tags":[
+            "loser",
+            "can win"
+         ]
+        },
+        {
+         "key":"3",
+         "name":"Joe Black",
+         "age":32,
+         "address":"Sidney No. 1 Lake Park, Sidney No. 1 Lake Park",
+         "tags":[
+            "cool",
+            "teacher"
+         ]
+        },
+        {
+         "key":"4",
+         "name":"John Doe",
+         "age":32,
+         "address":"Sydney No. 1 Lake Park, Sydney No. 1 Lake Park",
+         "tags":[
+            "awesome",
+            "doctor"
+         ]
+        },
+        {
+         "key":"6",
+         "name":"ra's al ghul",
+         "age":32,
+         "address":"Sydney No. 1 Lake Park, Sydney No. 1 Lake Park",
+         "tags":[
+            "super",
+            "villain"
+         ]
+        }
+       ]
+
+       
+
+       function createTable(data){
+           var table= document.getElementById('secondtTableBody')
+           table.innerHTML = ''
+           for(let i=0; i<data.length; i++){
+               let tableRow = `<tr>
+                                <td>${data[i].key}</td>
+                                <td>${data[i].name}</td>
+                                <td>${data[i].age}</td>
+                                <td>${data[i].address}</td>
+                                <td>${data[i].tags}</td>
+                            </tr>`
+                            console.log(tableRow)
+                table.innerHTML += tableRow
+           }
+       }
+
+       createTable(employeeDetails)
+
+
+
+       const searchInput=document.getElementById('query');
+       searchInput.addEventListener('input',eventFuction);
+
+
+       function eventFuction(event){
+           let result;
+           let temp='';
+           
+           result = employeeDetails.filter(item =>
+           item.name.toLowerCase().includes(event.target.value.toLowerCase())
+           );
+           console.log(result,'this is result')
+
+           if(result.length>0){
+               createTable(result)
+           }
+           else{
+               console.log("NO DATA TO SHOW");
+                document.getElementById("message").style.visibility="visible";
+                document.getElementById("secondTable").style.display="none";
+           }
+       }
+
+
+    </script>
+    
+</body>
+</html>

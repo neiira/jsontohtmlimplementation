@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color:#F5F5F5;
+    width: 100%;
+}
+
+.conainer-box{
+    width: 1170px;
+    height: 100%;
+    background-color: white;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    margin-bottom: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.table{
+    text-align: center;
+}
+h1{
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+
+.filter-search{
+    padding-top: 70px;
+}
+h2{
+    color:black;
+    padding-left: 200px;
+    padding-bottom: 20px;
+}
+
+.query{
+    height: 30px;
+    width: 769px;
+    border-radius: 4px;
+    margin-left: 199px;
+    border: 2px solid #1E90FF ;
+    background-color:white;
+    font-size: 16px;  
+}
+
+.query:focus { 
+      outline: none !important;
+}
+
+.second-table{
+    padding-bottom: 40px;
+    padding-top: 10px;
+}
+#message{
+    margin-left: 199px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    height: 30px;
+    visibility: hidden;
+    width: 770px;
+    border-radius: 5px;
+}
+
+.information-table tbody tr:hover{
+    font-weight: 400;
+    color:green;
+}
+.information-table{
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 16px;
+    min-width: 700px;
+    overflow: hidden;
+    
+}
+
+.information-table thead tr{
+    background-color:#1E90FF;
+    color: white; 
+    font-weight: bold;
+    font-style: normal;
+}
+.information-table th,
+.information-table td{
+    padding: 12px 15px;  
+}
+
+.information-table tbody tr{
+    border-bottom: 1px solid snow;
+}
+.information-table tbody tr:nth-of-type(even){
+    background-color:whitesmoke;
+}
+.information-table tbody tr:last-of-type{
+    border-bottom: 2px solid #1E90FF;
+}
+
